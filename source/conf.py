@@ -6,6 +6,11 @@
 # Note that not all possible configuration values are present. All configuration
 # values have a default.
 
+# Change these values
+base_name = "Template"  # will be used for titles
+base_author = "Sebastian Schmeier"
+base_url = "https://sschmeier.com"
+
 import sys
 import os
 import shlex
@@ -40,6 +45,7 @@ extensions = [
     "sphinx_gitstamp",
     "notfound.extension",
     "sphinx.ext.todo",
+    "recommonmark",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,15 +54,19 @@ templates_path = ["_templates"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 # source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".txt": "markdown",
+    ".md": "markdown",
+}
 
 # The master toctree document.
 master_doc = "index"
 
 # General information about the project.
-project = "Sphinx project template"
-copyright = "2020, Sebastian Schmeier"
-author = "Sebastian Schmeier"
+project = "%s template" % (base_name)
+copyright = "2020, %s" % (base_author)
+author = base_author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -156,7 +166,7 @@ html_copy_source = False
 
 # Language to be used for generating the HTML full-text search index.
 # Output file base name for HTML help builder.
-htmlhelp_basename = "SphinxTemplateDoc"
+htmlhelp_basename = "%sDoc" % (base_name)
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -191,9 +201,9 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "SphinxTemplate.tex",
-        " Sphinx Template Documentation",
-        "Sebastian Schmeier (https://sschmeier.com)",
+        "%s.tex" % base_name,
+        "%s Documentation" % base_name,
+        "%s (%s)" % (base_author, base_url),
         "manual",
     ),
 ]
@@ -240,7 +250,7 @@ latex_show_urls = "footnote"
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "Genomics Tutorial", u"Genomics Tutorial Documentation", [author], 1)
+    (master_doc, "%s Docs" % base_name, u"%s Documentation" % base_name, [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -256,18 +266,21 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "Genomics",
-        u"Computational Genomics Tutorial",
+        "%s" % base_name,
+        u"%s Documentation" % base_name,
         author,
-        "Computational Genomics Tutorial",
-        "Computational Genomics Tutorial Content.",
-        "teaching",
+        "%s Documentation" % base_name,
+        "%s Documentation Content." % base_name,
+        "docs",
     ),
 ]
 
 rst_epilog = """
-.. |seb| replace:: `Sebastian Schmeier <https://sschmeier.com>`__
-"""
+.. |aut| replace:: `%s <%s>`__
+""" % (
+    base_name,
+    base_author,
+)
 
 # to be able to use two dashes in my own blocks I turn off smartypants
 # html_use_smartypants=False
