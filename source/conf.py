@@ -56,7 +56,6 @@ templates_path = ["_templates"]
 # source_suffix = ['.rst', '.md']
 source_suffix = {
     ".rst": "restructuredtext",
-    ".txt": "markdown",
     ".md": "markdown",
 }
 
@@ -119,8 +118,8 @@ html_theme_path = [
 ]
 
 html_theme_options = {
-    "versions": [("latest", "/en/latest")],
-    "languages": [("en", "/en/latest"),],
+    "versions": [("0.1.0", "/en/0.1.0")],
+    "languages": [("en", "/en/0.1.0"),],
     "current_version": version,
 }
 

@@ -42,7 +42,7 @@ view:
 
 .PHONY: htmlwatch
 htmlwatch:
-	watchmedo shell-command --patterns="*.rst" --ignore-pattern='build/*' --recursive --command='make html'
+	watchmedo shell-command --patterns="*.md;*.rst" --ignore-pattern='build/*' --recursive --command='make html'
 
 
 .PHONY: deploy
