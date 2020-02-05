@@ -63,7 +63,7 @@ source_suffix = {
 master_doc = "index"
 
 # General information about the project.
-project = "%s template" % (base_name)
+project = "%s Docs" % (base_name)
 copyright = "2020, %s" % (base_author)
 author = base_author
 
@@ -87,7 +87,7 @@ locale_dirs = ["../l10n/locales/"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ["robots.txt"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
